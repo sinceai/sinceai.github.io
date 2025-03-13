@@ -12,7 +12,7 @@ import {
 import { LampContainer } from "@/components/effects/lamp";
 import Navbar from "@/components/utils/navbar";
 import Footer from "@/components/utils/footer";
-import { Accordion, AccordionItem } from "@heroui/react";
+import { Accordion, AccordionItem, Chip } from "@heroui/react";
 import { AnimatePresence } from "framer-motion";
 import Logo from "@/components/utils/logo";
 
@@ -103,7 +103,7 @@ export default function Home() {
                   </span>
                   <Card
                     isBlurred
-                    className="z-20 border-none bg-background/60 dark:bg-default-100/50 max-w-[400px]"
+                    className="z-20 border border-content1 bg-background/60 dark:bg-default-100/50 max-w-[400px]"
                   >
                     <CardHeader>
                       <span className="text-2xl font-bold">
@@ -120,7 +120,13 @@ export default function Home() {
                 </span>
               </div>
               <div className="flex flex-col flex-[1] w-full h-full justify-start gap-4 items-end">
-                <Card>
+                <Card
+                  isHoverable
+                  isBlurred
+                  className="z-20 border border-content1 bg-background/60 max-w-[400px] shadow-white"
+                  shadow="lg"
+                >
+                  {" "}
                   <CardBody>
                     <div className="flex flex-row items-end">
                       <NumberTicker
@@ -128,21 +134,41 @@ export default function Home() {
                         className="whitespace-pre-wrap text-8xl font-medium tracking-tighter text-white"
                         delay={1.5}
                       />
-                      <GoPlus size={60}/>
+                      <GoPlus size={60} />
                       <span className="text-3xl pb-2"> AI Enthusiast</span>
                     </div>
                   </CardBody>
                 </Card>
-                <Card className="w-fit">
-                  <CardBody>
-                    <div className="flex flex-row items-center gap-4">
-                      
-                      <span className="text-lg pb-2">Foods</span>
-                      <FaCheck size={24}/>
-                    </div>
+                <Card
+                  isHoverable
+                  isBlurred
+                  className="z-20 border border-content1 bg-background/60 dark:bg-default-100/50 max-w-[400px]"
+                >
+                  {" "}
+                  <CardHeader>What's included?</CardHeader>
+                  <CardBody className="flex flex-row flex-wrap w-[300] gap-1">
+                    <Chip color="primary" variant="flat">
+                      Foods
+                    </Chip>
+                    <Chip color="primary" variant="flat">
+                      Drinks
+                    </Chip>
+
+                    <Chip color="secondary" variant="flat">
+                      GPUs
+                    </Chip>
+
+                    <Chip color="secondary" variant="flat">
+                      APIs
+                    </Chip>
+
+                    <Chip color="primary" variant="flat">
+                      Space
+                    </Chip>
+
+                    <span>more coming up...</span>
                   </CardBody>
                 </Card>
-                
               </div>
             </div>
             <div className="absolute flex flex-row items-center justify-center h-[calc(100vh-4rem)] bg-transparent w-full">
