@@ -1,11 +1,10 @@
-import React from 'react';
+import React from "react";
+interface LogoProps {
+  className?: string;
+}
 
-const Logo: React.FC = () => {
-    return (
-        <div>
-            Since AI
-        </div>
-    );
+const Logo: React.FC<LogoProps> = ({ className }) => {
+  return <div className={`font-bold ${className || ""}`}>Since AI</div>;
 };
 
 export default Logo;

@@ -130,6 +130,9 @@ export default {
         focus: "#006FEE",
         overlay: "#000000",
       },
+      fontFamily: {
+        sans: ['Roboto', 'sans-serif'],
+      }
     },
     dark: {
       colors: {
@@ -251,7 +254,15 @@ export default {
         focus: "#006FEE",
         overlay: "#ffffff",
       },
+      fontFamily: {
+        sans: ['Roboto', 'sans-serif'],
+      }
     },
+    extend: {
+      fontFamily: {
+        sans: ['Roboto', 'sans-serif'],
+      }
+    }
   },
   layout: {
     disabledOpacity: "0.5",
@@ -259,10 +270,11 @@ export default {
 
   darkMode: "class",
   plugins: [heroui({
-    defaultTheme: "dark",
+    defaultTheme: "dark", 
     layout: {
       dividerWeight: "1px", // h-divider the default height applied to the divider component
       disabledOpacity: 0.5, // this value is applied as opacity-[value] when the component is disabled
+      
       fontSize: {
         tiny: "0.75rem", // text-tiny
         small: "0.875rem", // text-small

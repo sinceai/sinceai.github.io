@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Robotics Club",
+  title: "Since AI",
   description:
-    "Robotics Club! Build robots, learn tech, and compete in Europe! Join us at ICT_2040.",
+    "Since AI is here, why not be a part of it?",
 };
 
 export default function RootLayout({
