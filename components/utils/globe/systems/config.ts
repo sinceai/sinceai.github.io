@@ -4,7 +4,7 @@ const cameraZ = 300;
 const container = () => document.getElementById("scene-container");
 
 const canvasWidth = () =>
-  window?.innerWidth > 1024
+  typeof window !== 'undefined' && window.innerWidth > 1024
     ? container()?.offsetHeight ?? 500
     : window.innerWidth;
 

@@ -5,7 +5,9 @@ import Lenis from '@studio-freight/lenis'
 export default function smoothScroll({children}) {
 
     useEffect( () => {
-        window.scrollTo(0,0);
+        if (typeof window !== 'undefined') {
+            window.scrollTo(0,0);
+        }
         
         const lenis = new Lenis()
         

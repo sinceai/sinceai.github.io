@@ -101,7 +101,9 @@ class World {
     this.scene.fog = new Fog(0xffffff, 400, 2000);
 
     this.renderer = new WebGLRenderer({ antialias: true, alpha: true });
-    this.renderer.setPixelRatio(window.devicePixelRatio);
+    if (typeof window !== 'undefined') {
+      this.renderer.setPixelRatio(window.devicePixelRatio);
+    }
     this.renderer.setSize(canvasWidth(), canvasHeight());
     this.renderer.setClearColor(0xffaaff, 0);
     this.renderer.domElement.id = "globe-canvas";
