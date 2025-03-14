@@ -11,7 +11,7 @@
   "dependencies": {
     "@heroui/react": "^2.7.2",
     "@react-three/drei": "^10.0.4",
-    "@react-three/fiber": "^8.2.2",
+    "@react-three/fiber": "^9.1.0",
     "clsx": "^2.1.1",
     "firebase": "^11.3.1",
     "framer-motion": "^12.4.5",
