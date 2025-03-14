@@ -9,6 +9,8 @@ import { Divider } from "@heroui/react";
 import { Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import versionData from "@/version.json";
+import { FaLinkedin } from "react-icons/fa";
+
 
 const Footer: NextPage = () => {
   const router = useRouter();
@@ -38,15 +40,14 @@ const Footer: NextPage = () => {
   };
 
   const toDiscord = () => {
-    window.location.href = "https://discord.gg/KV9zD7bDjw";
   };
 
   const toInstagram = () => {
-    window.location.href = "https://www.instagram.com/clubrobotic41/";
+    window.location.href = "https://www.instagram.com/since_ai/";
   };
 
-  const toWhatsapp = () => {
-    window.location.href = "https://wa.me";
+  const toLinkedin = () => {
+    window.location.href = "https://www.linkedin.com/company/sinceai/about/?viewAsMember=true";
   };
 
   return (
@@ -66,12 +67,12 @@ const Footer: NextPage = () => {
             <Button onPress={toDiscord} isIconOnly variant="ghost">
               <FaDiscord size={"18"} />
             </Button>
-            <Button onPress={toWhatsapp} isIconOnly variant="ghost">
-              <FaWhatsapp size={"18"} />
+            <Button onPress={toLinkedin} isIconOnly variant="ghost">
+              <FaLinkedin size={"18"} />
             </Button>
           </div>
         </div>
-        <div className="flex flex-col items-start justify-center w-fit h-fit p-4">
+        {/* <div className="flex flex-col items-start justify-center w-fit h-fit p-4">
           <div className="color-text-background headingXXSmall pb-1">
             Contact
           </div>
@@ -84,8 +85,8 @@ const Footer: NextPage = () => {
           >
             Contacts
           </div>
-        </div>
-        <div className="flex flex-col items-start justify-center w-fit h-fit p-4 gap-1">
+        </div> */}
+        {/* <div className="flex flex-col items-start justify-center w-fit h-fit p-4 gap-1">
           <div className="color-text-background headingXXSmall pb-1">Pages</div>
           <div
             onClick={toHome}
@@ -117,7 +118,7 @@ const Footer: NextPage = () => {
           >
             About
           </div>
-        </div>
+        </div> */}
       </div>
       <Divider />
       <div className="flex flex-row w-full items-center justify-between h-fit px-8">

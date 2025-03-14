@@ -12,7 +12,7 @@ const ContactPage: React.FC = () => {
   };
 
   const toInstagram = () => {
-    window.location.href = "https://www.instagram.com/clubrobotic41/";
+    window.location.href = "https://www.instagram.com/since_ai/";
   };
 
   const toWhatsapp = () => {

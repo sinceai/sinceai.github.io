@@ -128,7 +128,7 @@ export const HoveredLink = ({ children, ...rest }: any) => {
   );
 };
 
-import { FaInstagram, FaDiscord, FaWhatsapp } from "react-icons/fa";
+import { FaInstagram, FaDiscord, FaWhatsapp, FaLinkedin} from "react-icons/fa";
 
 function Navbar({ className }: { className?: string }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -162,15 +162,14 @@ function Navbar({ className }: { className?: string }) {
   };
 
   const toDiscord = () => {
-    window.location.href = "https://discord.gg/KV9zD7bDjw";
   };
 
   const toInstagram = () => {
-    window.location.href = "https://www.instagram.com/clubrobotic41/";
+    window.location.href = "https://www.instagram.com/since_ai/";
   };
 
-  const toWhatsapp = () => {
-    window.location.href = "https://wa.me";
+  const toLinkedin = () => {
+    window.location.href = "https://www.linkedin.com/company/sinceai/about/?viewAsMember=true";
   };
 
   const toApply = () => {
@@ -189,7 +188,7 @@ function Navbar({ className }: { className?: string }) {
       <NextUINavbar
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={setIsMenuOpen}
-        maxWidth="xl"
+        maxWidth="2xl"
       >
         <NavbarContent className="sm:hidden" justify="start">
           <NavbarBrand>
@@ -223,8 +222,8 @@ function Navbar({ className }: { className?: string }) {
             <Button variant="light" isIconOnly onPress={toDiscord}>
               <FaDiscord size={24} />
             </Button>
-            <Button variant="light" isIconOnly onPress={toWhatsapp}>
-              <FaWhatsapp size={24} />
+            <Button variant="light" isIconOnly onPress={toLinkedin}>
+              <FaLinkedin size={24} />
             </Button>
           </div>
         </NavbarContent>
@@ -241,8 +240,8 @@ function Navbar({ className }: { className?: string }) {
             <NavbarMenuItem className="color-primary" onClick={toInstagram}>
               Instagram
             </NavbarMenuItem>
-            <NavbarMenuItem className="color-primary" onClick={toWhatsapp}>
-              Whatsapp
+            <NavbarMenuItem className="color-primary" onClick={toLinkedin}>
+              Linkedin
             </NavbarMenuItem>
           </>
         </NextUINavbarMenu>
