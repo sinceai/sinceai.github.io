@@ -43,23 +43,25 @@ const Home: React.FC = () => {
   const [startLoading, setStartLoading] = useState(true);
 
   useEffect(() => {
-    (async () => {
-      if (!document.getElementById("globe-canvas")) {
-        const container = document.querySelector("#scene-container");
-        const world = new World(container as Element, undefined, globeConfig);
-        world.start();
-      }
-      const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      const locomotiveScroll = new LocomotiveScroll();
-2
-      await setTimeout(() => {
-        setIsLoading(false);
-      }, 2100);
-
-      await setTimeout(() => {
-        setStartLoading(false);
-      }, 2500);
-    })();
+    if (typeof window !== "undefined") {
+      (async () => {
+        if (!document.getElementById("globe-canvas")) {
+          const container = document.querySelector("#scene-container");
+          const world = new World(container as Element, undefined, globeConfig);
+          world.start();
+        }
+        const LocomotiveScroll = (await import("locomotive-scroll")).default;
+        const locomotiveScroll = new LocomotiveScroll();
+  
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 2100);
+  
+        setTimeout(() => {
+          setStartLoading(false);
+        }, 2500);
+      })();
+    }
   }, []);
 
   
