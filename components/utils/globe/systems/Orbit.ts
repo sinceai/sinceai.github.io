@@ -7,6 +7,7 @@ class Orbit extends OrbitControls {
     super(camera, canvas);
   }
 
+
   tick = () => this.update();
 }
 
