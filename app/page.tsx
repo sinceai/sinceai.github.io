@@ -38,7 +38,7 @@ import { IoIosSend } from "react-icons/io";
 import { World } from "@/components/utils/globe";
 import { globeConfig } from "@/components/utils/config.globe";
 
-export default function Home() {
+const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [startLoading, setStartLoading] = useState(true);
 
@@ -311,3 +311,6 @@ export default function Home() {
     </HeroUIProvider>
   );
 }
+
+
+export default Home;
