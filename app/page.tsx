@@ -54,7 +54,6 @@ const Home: React.FC = () => {
 2
       await setTimeout(() => {
         setIsLoading(false);
-        document.body.style.cursor = "default";
       }, 2100);
 
       await setTimeout(() => {
