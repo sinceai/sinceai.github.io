@@ -43,11 +43,11 @@ const Footer: NextPage = () => {
   };
 
   const toInstagram = () => {
-    window.location.href = "https://www.instagram.com/since_ai/";
+    router.push("https://www.instagram.com/since_ai/");
   };
 
   const toLinkedin = () => {
-    window.location.href = "https://www.linkedin.com/company/sinceai/about/?viewAsMember=true";
+    router.push("https://www.linkedin.com/company/sinceai/about/?viewAsMember=true");
   };
 
   return (

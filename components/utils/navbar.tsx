@@ -165,20 +165,19 @@ function Navbar({ className }: { className?: string }) {
   };
 
   const toInstagram = () => {
-    window.location.href = "https://www.instagram.com/since_ai/";
+    router.push("https://www.instagram.com/since_ai/");
   };
 
   const toLinkedin = () => {
-    window.location.href = "https://www.linkedin.com/company/sinceai/about/?viewAsMember=true";
+    router.push("https://www.linkedin.com/company/sinceai/about/?viewAsMember=true");
   };
 
   const toApply = () => {
-    window.location.href = "https://lu.ma/2vs4wsjr";
+    router.push("https://lu.ma/2vs4wsjr");
   };
 
-
   const toPartners = () => {
-    window.location.href = "https://wa.me";
+    router.push("https://wa.me");
   };
 
 
