@@ -1,3 +1,5 @@
+"use client";
+import React, { useEffect, useState } from "react";
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -7,7 +9,7 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from "@heroui/navbar";
-import { Button } from "@heroui/button";
+import { Button, ButtonGroup } from "@heroui/button";
 import { Kbd } from "@heroui/kbd";
 import { Link } from "@heroui/link";
 import { Input } from "@heroui/input";
@@ -15,6 +17,14 @@ import { link as linkStyles } from "@heroui/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
 
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+import { useRouter } from "next/navigation";
+
+import { FaInstagram, FaDiscord, FaWhatsapp, FaLinkedin } from "react-icons/fa";
+
+import Logo from "./logo";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import {
@@ -23,118 +33,115 @@ import {
   DiscordIcon,
   HeartFilledIcon,
   SearchIcon,
-  Logo,
 } from "@/components/icons";
 
 export const Navbar = () => {
-  const searchInput = (
-    <Input
-      aria-label="Search"
-      classNames={{
-        inputWrapper: "bg-default-100",
-        input: "text-sm",
-      }}
-      endContent={
-        <Kbd className="hidden lg:inline-block" keys={["command"]}>
-          K
-        </Kbd>
-      }
-      labelPlacement="outside"
-      placeholder="Search..."
-      startContent={
-        <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-      }
-      type="search"
-    />
-  );
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  const router = useRouter();
+
+  const [loading, setLoading] = useState(true);
+
+  const toHome = () => {
+    router.push("/");
+  };
+
+  const toAbout = () => {
+    router.push("/about");
+  };
+
+  const toEvents = () => {
+    router.push("/events");
+  };
+
+  const toContact = () => {
+    router.push("/contact");
+  };
+
+  const toProjects = () => {
+    router.push("/projects");
+  };
+
+  const toTeam = () => {
+    router.push("/team");
+  };
+
+  const toDiscord = () => {};
+
+  const toInstagram = () => {
+    router.push("https://www.instagram.com/since_ai/");
+  };
+
+  const toLinkedin = () => {
+    router.push(
+      "https://www.linkedin.com/company/sinceai/about/?viewAsMember=true"
+    );
+  };
+
+  const toApply = () => {
+    router.push("https://lu.ma/2vs4wsjr");
+  };
+
+  const toPartners = () => {
+    router.push("https://wa.me");
+  };
 
   return (
     <HeroUINavbar maxWidth="xl" position="sticky">
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo />
-            <p className="font-bold text-inherit">ACME</p>
-          </NextLink>
+      <NavbarContent className="sm:hidden" justify="start">
+        <NavbarBrand>
+          <Logo />
         </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
-              <NextLink
-                className={clsx(
-                  linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
-                )}
-                color="foreground"
-                href={item.href}
-              >
-                {item.label}
-              </NextLink>
-            </NavbarItem>
-          ))}
-        </ul>
+      </NavbarContent>
+      <NavbarContent className="sm:hidden" justify="end">
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        />
       </NavbarContent>
 
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
-      >
-        <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
-            <TwitterIcon className="text-default-500" />
-          </Link>
-          <Link isExternal aria-label="Discord" href={siteConfig.links.discord}>
-            <DiscordIcon className="text-default-500" />
-          </Link>
-          <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-            <GithubIcon className="text-default-500" />
-          </Link>
-          <ThemeSwitch />
-        </NavbarItem>
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-        <NavbarItem className="hidden md:flex">
-          <Button
-            isExternal
-            as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
-            href={siteConfig.links.sponsor}
-            startContent={<HeartFilledIcon className="text-danger" />}
-            variant="flat"
-          >
-            Sponsor
+      <NavbarContent className="hidden sm:flex" justify="start">
+        <NavbarBrand onClick={toHome} className="cursor-pointer">
+          <Logo />
+        </NavbarBrand>
+      </NavbarContent>
+
+      <NavbarContent className="hidden sm:flex" justify="center">
+        <ButtonGroup variant="light">
+          <Button onPress={toDiscord}>Community</Button>
+          <Button onPress={toApply}>Apply</Button>
+        </ButtonGroup>
+      </NavbarContent>
+
+      <NavbarContent justify="end" className="hidden sm:flex">
+        <div className="flex flex-row items-center gap-4">
+          <Button variant="light" isIconOnly onPress={toInstagram}>
+            <FaInstagram size={24} />
           </Button>
-        </NavbarItem>
-      </NavbarContent>
-
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-          <GithubIcon className="text-default-500" />
-        </Link>
-        <ThemeSwitch />
-        <NavbarMenuToggle />
+          <Button variant="light" isIconOnly onPress={toDiscord}>
+            <FaDiscord size={24} />
+          </Button>
+          <Button variant="light" isIconOnly onPress={toLinkedin}>
+            <FaLinkedin size={24} />
+          </Button>
+        </div>
       </NavbarContent>
 
       <NavbarMenu>
-        {searchInput}
-        <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                href="#"
-                size="lg"
-              >
-                {item.label}
-              </Link>
-            </NavbarMenuItem>
-          ))}
-        </div>
+        <>
+          <NavbarMenuItem onClick={toHome}>Home</NavbarMenuItem>
+          <NavbarMenuItem onClick={toDiscord}>Community</NavbarMenuItem>
+          <NavbarMenuItem onClick={toApply}>Apply</NavbarMenuItem>
+
+          <NavbarMenuItem className="color-primary" onClick={toDiscord}>
+            Discord
+          </NavbarMenuItem>
+          <NavbarMenuItem className="color-primary" onClick={toInstagram}>
+            Instagram
+          </NavbarMenuItem>
+          <NavbarMenuItem className="color-primary" onClick={toLinkedin}>
+            Linkedin
+          </NavbarMenuItem>
+        </>
       </NavbarMenu>
     </HeroUINavbar>
   );
