@@ -30,15 +30,14 @@ import { GoPlus } from "react-icons/go";
 import { FaCheck } from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
 
+import educity from "@/public/assets/images/educity.jpg";
+
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       (async () => {
-        
-        
-  
         setTimeout(() => {
           setIsLoading(false);
         }, 2500);
@@ -51,13 +50,13 @@ export default function Home() {
         {isLoading && <Preloader />}
       </AnimatePresence>
 
-      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+      <section className="flex flex-col w-full h-fit items-center justify-center gap-4">
         <section
           className="flex flex-row w-full h-fit items-center justify-center"
           style={{ maxWidth: "1536px" }}
         >
-          <div className="flex flex-row flex-wrap w-full h-full items-center justify-center p-8 py-16 gap-4">
-            <div className="flex flex-col flex-[2] justify-between w-full h-full gap-4 items-center md:items-start">
+          <div className="flex flex-row flex-wrap w-full h-full items-center justify-center gap-4">
+            <div className="flex flex-col flex-1 justify-between w-full h-full gap-4 items-center md:items-start">
               <span className="flex flex-col gap-4">
                 <span className="flex flex-row items-end gap-2">
                   <Logo className="text-6xl" />
@@ -161,7 +160,7 @@ export default function Home() {
                 </Card>
               </div>
             </div>
-            <div className="flex flex-col flex-[1] w-full h-fit justify-start gap-4 items-center md:items-end">
+            <div className="flex flex-col flex-1 w-full h-fit justify-start gap-4 items-center md:items-end">
               <Card
                 isHoverable
                 isBlurred
@@ -200,7 +199,6 @@ export default function Home() {
                   </div>
                 </CardBody>
               </Card>
-
               <Card
                 isFooterBlurred
                 className="w-fit h-[300px] col-span-12 sm:col-span-7 z-20"
@@ -215,6 +213,7 @@ export default function Home() {
                 </CardHeader>
                 <Image
                   removeWrapper
+                  src={educity.src}
                   className="z-30 object-cover w-full h-full"
                 />
                 <CardFooter className="flex flex-col items-start absolute bg-black/40 bottom-0 z-40 border-t-1 border-default-600 dark:border-default-100">
