@@ -59,8 +59,10 @@ export default function Home() {
             <div className="flex flex-col flex-1 justify-between w-full h-full gap-4 items-center md:items-start">
               <span className="flex flex-col gap-4">
                 <span className="flex flex-row items-end gap-2">
-                  <Logo className="text-6xl" />
-                  <span className="text-4xl">is Here</span>
+                  <Logo className="text-5xl md:text-6x2 lg:text-7xl whitespace-nowrap" />
+                  <span className="text-4xl md:text-5xl lg:text-6xl whitespace-nowrap">
+                    is Here
+                  </span>
                 </span>
                 <span className="flex flex-row gap-2">
                   <span className="text-3xl font-bold items-center justify-center">
