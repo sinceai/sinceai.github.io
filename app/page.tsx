@@ -1,316 +1,103 @@
-"use client";
+import Image from "next/image";
 
-import React, { useState, useEffect } from "react";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  CardFooter,
-  HeroUIProvider,
-  Image,
-  Link,
-  Divider,
-  Input,
-  Avatar,
-} from "@heroui/react";
-import { LampContainer } from "@/components/effects/lamp";
-import Navbar from "@/components/utils/navbar";
-import Footer from "@/components/utils/footer";
-import { Accordion, AccordionItem, Chip } from "@heroui/react";
-import { AnimatePresence } from "framer-motion";
-import Logo from "@/components/utils/logo";
-
-import Preloader from "@/components/utils/Preloader";
-import SmoothScroll from "@/components/utils/smoothScroll";
-import Projects from "@/components/projects";
-import dynamic from "next/dynamic";
-import { Arcs } from "@/components/data/data";
-import { IoLocationSharp } from "react-icons/io5";
-import { MdDateRange } from "react-icons/md";
-import { MdAttachMoney } from "react-icons/md";
-import { NumberTicker } from "@/components/effects/number_ticker";
-import { GoPlus } from "react-icons/go";
-import { FaCheck } from "react-icons/fa";
-import educity from "@/public/assets/images/educity.jpg";
-import { IoIosSend } from "react-icons/io";
-
-import { World } from "@/components/utils/globe";
-import { globeConfig } from "@/components/utils/config.globe";
-
-const Home: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [startLoading, setStartLoading] = useState(true);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      (async () => {
-        if (!document.getElementById("globe-canvas")) {
-          const container = document.querySelector("#scene-container");
-          const world = new World(container as Element, undefined, globeConfig);
-          world.start();
-        }
-        const LocomotiveScroll = (await import("locomotive-scroll")).default;
-        const locomotiveScroll = new LocomotiveScroll();
-  
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 2100);
-  
-        setTimeout(() => {
-          setStartLoading(false);
-        }, 2500);
-      })();
-    }
-  }, []);
-
-  
-
+export default function Home() {
   return (
-    <HeroUIProvider>
-      <AnimatePresence mode="wait">
-        {startLoading && <Preloader />}
-      </AnimatePresence>
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+        <Image
+          className="dark:invert"
+          src="/next.svg"
+          alt="Next.js logo"
+          width={180}
+          height={38}
+          priority
+        />
+        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+          <li className="mb-2 tracking-[-.01em]">
+            Get started by editing{" "}
+            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
+              app/page.tsx
+            </code>
+            .
+          </li>
+          <li className="tracking-[-.01em]">
+            Save and see your changes instantly.
+          </li>
+        </ol>
 
-      <div className="min-h-screen justify-between flex flex-col w-full items-center">
-        <Navbar />
-        <section
-          className="flex flex-row w-full h-fit items-center justify-center"
-          style={{ maxWidth: "1536px" }}
+        <div className="flex gap-4 items-center flex-col sm:flex-row">
+          <a
+            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
+            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              className="dark:invert"
+              src="/vercel.svg"
+              alt="Vercel logomark"
+              width={20}
+              height={20}
+            />
+            Deploy now
+          </a>
+          <a
+            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
+            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Read our docs
+          </a>
+        </div>
+      </main>
+      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <div className="flex flex-row flex-wrap w-full h-full items-center justify-center p-8 py-16 gap-4">
-            <div className="flex flex-col flex-[2] justify-between w-full h-full gap-4 items-center md:items-start">
-              <span className="flex flex-col gap-4">
-                <span className="flex flex-row items-end gap-2">
-                  <Logo className="text-6xl" />
-                  <span className="text-4xl">is Here</span>
-                </span>
-                <span className="flex flex-row gap-2">
-                  <span className="text-3xl font-bold items-center justify-center">
-                    Why not{" "}
-                    <Link
-                      color="secondary"
-                      className="text-3xl z-20"
-                      underline="hover"
-                    >
-                      Join
-                    </Link>
-                    ?
-                  </span>
-                </span>
-
-                <Card
-                  isBlurred
-                  className="z-20 border border-content1 bg-background/60 dark:bg-default-100/50 max-w-[400px]"
-                >
-                  <CardHeader>
-                    <span className="text-sm font-bold">
-                      3 days AI Hackathon
-                    </span>
-                  </CardHeader>
-                  <CardBody>
-                    <div className="text-sm flex flex-col gap-4">
-                      We cover GPUs, APIs, Foods, Drinks, and more! All you need
-                      is passion and knowledge
-                    </div>
-                  </CardBody>
-                </Card>
-              </span>
-              <div>
-                <Card
-                  isBlurred
-                  className="z-20 border border-content1 bg-background/60 max-w-[400px] shadow-white"
-                  shadow="lg"
-                >
-                  <CardBody className="flex flex-col gap-2">
-                    <div className="flex flex-row items-start gap-2">
-                      <div>
-                        <Avatar
-                          className="bg-gradient-to-r from-primary to-secondary"
-                          name="SA"
-                        />
-                      </div>
-                      <Card>
-                        <CardBody>
-                          Watch here, Ask me anything, there's nothing much on
-                          this website, and don't even compare me with any other
-                          stupid chatbot on other website, WE ARE NOT THE SAME.
-                          you got questions? ask me.
-                        </CardBody>
-                      </Card>
-                      <div>
-                        <Avatar className="bg-transparent" name=" " />
-                      </div>
-                    </div>
-                    <div className="flex flex-row items-start justify-end gap-2 w-full">
-                      <div>
-                        <Avatar className="bg-transparent" name=" " />
-                      </div>
-                      <Card className="bg-transparent" shadow="none">
-                        <CardBody>Okay? understand..</CardBody>
-                      </Card>
-                      <div>
-                        <Avatar
-                          className="bg-gradient-to-r from-secondary to-primary"
-                          name="You"
-                        />
-                      </div>
-                    </div>
-                    <div className="flex flex-row items-start gap-2">
-                      <div>
-                        <Avatar
-                          className="bg-gradient-to-r from-primary to-secondary"
-                          name="SA"
-                        />
-                      </div>
-                      <Card>
-                        <CardBody>Good, so how can I help?</CardBody>
-                      </Card>
-                      <div>
-                        <Avatar className="bg-transparent" name=" " />
-                      </div>
-                    </div>
-                  </CardBody>
-                  <CardFooter>
-                    <Input
-                      endContent={
-                        <Button isIconOnly variant="light">
-                          <IoIosSend />
-                        </Button>
-                      }
-                    />
-                  </CardFooter>
-                </Card>
-              </div>
-            </div>
-            <div className="flex flex-col flex-[1] w-full h-fit justify-start gap-4 items-center md:items-end">
-              <Card
-                isHoverable
-                isBlurred
-                className="flex w-full md:w-fit  z-20 border border-content1 bg-background/60 max-w-[500px] shadow-white"
-                shadow="lg"
-              >
-                {" "}
-                <CardBody>
-                  <div className="flex flex-row items-end">
-                    <NumberTicker
-                      value={10000}
-                      className="whitespace-pre-wrap text-7xl font-medium tracking-tighter text-white"
-                      delay={3.5}
-                    />
-                    <MdAttachMoney size={60} />
-                    <span className="text-3xl pb-2">Prize Pool</span>
-                  </div>
-                </CardBody>
-              </Card>
-              <Card
-                isHoverable
-                isBlurred
-                className="flex w-full md:w-fit z-20 border border-content1 bg-background/60 max-w-[450px] shadow-white"
-                shadow="lg"
-              >
-                {" "}
-                <CardBody>
-                  <div className="flex flex-row items-end">
-                    <NumberTicker
-                      value={200}
-                      className="whitespace-pre-wrap text-7xl font-medium tracking-tighter text-white"
-                      delay={3.5}
-                    />
-                    <GoPlus size={60} />
-                    <span className="text-3xl pb-2"> AI Enthusiast</span>
-                  </div>
-                </CardBody>
-              </Card>
-
-              <Card
-                isFooterBlurred
-                className="w-fit h-[300px] col-span-12 sm:col-span-7 z-20"
-              >
-                <CardHeader className="absolute z-10 top-1 flex-col items-start">
-                  <p className="text-tiny text-white/60 uppercase font-bold">
-                    Your day your way
-                  </p>
-                  <h4 className="text-white/90 font-medium text-xl">
-                    Your checklist for better sleep
-                  </h4>
-                </CardHeader>
-                <Image
-                  removeWrapper
-                  src={educity.src}
-                  className="z-30 object-cover w-full h-full"
-                />
-                <CardFooter className="flex flex-col items-start absolute bg-black/40 bottom-0 z-40 border-t-1 border-default-600 dark:border-default-100">
-                  <div className="flex flex-row items-center gap-2">
-                    <Button isIconOnly variant="light">
-                      <IoLocationSharp size={24} />
-                    </Button>
-                    <span>Edu city, Turku, Finland</span>
-                  </div>
-                  <div className="flex flex-row items-center gap-2">
-                    <Button isIconOnly variant="light">
-                      <MdDateRange size={24} />
-                    </Button>
-                    <span>In 3 - 5 months</span>
-                  </div>
-                </CardFooter>
-              </Card>
-              <Card
-                isHoverable
-                isBlurred
-                className="flex w-full z-20 border border-content1 bg-background/60 dark:bg-default-100/50 max-w-[400px]"
-              >
-                {" "}
-                <CardHeader>What's included?</CardHeader>
-                <CardBody className="flex flex-row flex-wrap  gap-1">
-                  <Chip color="primary" variant="flat">
-                    Foods
-                  </Chip>
-                  <Chip color="primary" variant="flat">
-                    Drinks
-                  </Chip>
-
-                  <Chip color="secondary" variant="flat">
-                    GPUs
-                  </Chip>
-
-                  <Chip color="secondary" variant="flat">
-                    APIs
-                  </Chip>
-
-                  <Chip color="primary" variant="flat">
-                    Space
-                  </Chip>
-
-                  <span>more coming up...</span>
-                </CardBody>
-              </Card>
-            </div>
-          </div>
-          <div className="absolute flex flex-row items-center justify-center h-[calc(100vh-4rem)] bg-transparent w-full">
-            <div className="w-full mx-auto relative overflow-hidden h-full px-4">
-              <div className="absolute w-full bottom-0 inset-x-0 h-full bg-gradient-to-b pointer-events-none select-none from-transparent to-primary/20 z-40" />
-              <div
-                id="scene-container"
-                key="scene-container"
-                className="absolute items-center justify-center w-full h-full z-10"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              ></div>
-            </div>
-          </div>
-        </section>
-
-        <Footer />
-      </div>
-    </HeroUIProvider>
+          <Image
+            aria-hidden
+            src="/file.svg"
+            alt="File icon"
+            width={16}
+            height={16}
+          />
+          Learn
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="/window.svg"
+            alt="Window icon"
+            width={16}
+            height={16}
+          />
+          Examples
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="/globe.svg"
+            alt="Globe icon"
+            width={16}
+            height={16}
+          />
+          Go to nextjs.org →
+        </a>
+      </footer>
+    </div>
   );
 }
-
-
-export default Home;
