@@ -12,9 +12,9 @@ import { Navbar } from "@/components/navbar";
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    template: `Since AI Hackathon | Europe's Premier AI Innovation Event`,
   },
-  description: siteConfig.description,
+  description: '3-day AI hackathon bringing together AI enthusiasts to innovate and develop groundbreaking AI projects.',
   icons: {
     icon: "/favicon.ico",
   },
