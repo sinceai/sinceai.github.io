@@ -1,6 +1,8 @@
 "use client";
 
 import { Link } from "@heroui/link";
+import { TextEffect } from '@/components/motion-primitives/text-effect';
+
 
 import React, { useState, useEffect } from "react";
 import {
@@ -83,8 +85,11 @@ export default function Home() {
                   className="z-20 border border-content1 bg-background/60 dark:bg-default-100/50 max-w-[400px]"
                 >
                   <CardHeader>
+
                     <span className="text-sm font-bold">
+                        <TextEffect per='char' preset='fade'>
                       3 days AI Hackathon
+                        </TextEffect>
                     </span>
                   </CardHeader>
                   <CardBody>
