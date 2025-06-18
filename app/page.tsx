@@ -1,9 +1,6 @@
 "use client";
-import { useScroll, useTransform } from "motion/react";
 import React from "react";
-import { GoogleGeminiEffect } from "@/components/ui/google-gemini-effect";
 import SmoothScroll from "@/components/smoothScroll";
-import Projects from "@/components/projects";
 import { useEffect, useState } from "react";
 import Preloader from "@/components/utils/Preloader";
 import { AnimatePresence } from "framer-motion";
@@ -136,57 +133,57 @@ export default function GoogleGeminiEffectDemo() {
           <InfiniteSlider gap={24}>
             <img
               src="assets\logo\logo_full.png"
-              alt="Nintendo logo"
+              alt="logo"
               className="h-[120px] w-auto"
             />
             <img
               src="assets\logo\logo_full.png"
-              alt="Nintendo logo"
+              alt="logo"
               className="h-[120px] w-auto"
             />
             <img
               src="assets\logo\logo_full.png"
-              alt="Nintendo logo"
+              alt="logo"
               className="h-[120px] w-auto"
             />
             <img
               src="assets\logo\logo_full.png"
-              alt="Nintendo logo"
+              alt="logo"
               className="h-[120px] w-auto"
             />
             <img
               src="assets\logo\logo_full.png"
-              alt="Nintendo logo"
+              alt="logo"
               className="h-[120px] w-auto"
             />
             <img
               src="assets\logo\logo_full.png"
-              alt="Nintendo logo"
+              alt="logo"
               className="h-[120px] w-auto"
             />
             <img
               src="assets\logo\logo_full.png"
-              alt="Nintendo logo"
+              alt="logo"
               className="h-[120px] w-auto"
             />
             <img
               src="assets\logo\logo_full.png"
-              alt="Nintendo logo"
+              alt="logo"
               className="h-[120px] w-auto"
             />
             <img
               src="assets\logo\logo_full.png"
-              alt="Nintendo logo"
+              alt="logo"
               className="h-[120px] w-auto"
             />
             <img
               src="assets\logo\logo_full.png"
-              alt="Nintendo logo"
+              alt="logo"
               className="h-[120px] w-auto"
             />
             <img
               src="assets\logo\logo_full.png"
-              alt="Nintendo logo"
+              alt="logo"
               className="h-[120px] w-auto"
             />
           </InfiniteSlider>
@@ -486,42 +483,42 @@ export default function GoogleGeminiEffectDemo() {
                 >
                   <div data-id={`card-1`}>
                     <div className="flex select-none flex-col space-y-1 p-4">
-                      <img src="assets/logo/logo_full.png" />
+                      <img src="assets/logo/logo_full.png" alt="logo"/>
                     </div>
                   </div>
                   <div data-id={`card-2`}>
                     <div className="flex select-none flex-col space-y-1 p-4">
-                      <img src="assets/logo/logo_full.png" />
+                      <img src="assets/logo/logo_full.png" alt="logo"/>
                     </div>
                   </div>
                   <div data-id={`card-3`}>
                     <div className="flex select-none flex-col space-y-1 p-4">
-                      <img src="assets/logo/logo_full.png" />
+                      <img src="assets/logo/logo_full.png" alt="logo"/>
                     </div>
                   </div>
                   <div data-id={`card-4`}>
                     <div className="flex select-none flex-col space-y-1 p-4">
-                      <img src="assets/logo/logo_full.png" />
+                      <img src="assets/logo/logo_full.png" alt="logo"/>
                     </div>
                   </div>
                   <div data-id={`card-5`}>
                     <div className="flex select-none flex-col space-y-1 p-4">
-                      <img src="assets/logo/logo_full.png" />
+                      <img src="assets/logo/logo_full.png" alt="logo"/>
                     </div>
                   </div>
                   <div data-id={`card-6`}>
                     <div className="flex select-none flex-col space-y-1 p-4">
-                      <img src="assets/logo/logo_full.png" />
+                      <img src="assets/logo/logo_full.png" alt="logo"/>
                     </div>
                   </div>
                   <div data-id={`card-7`}>
                     <div className="flex select-none flex-col space-y-1 p-4">
-                      <img src="assets/logo/logo_full.png" />
+                      <img src="assets/logo/logo_full.png" alt="logo"/>
                     </div>
                   </div>
                   <div data-id={`card-8`}>
                     <div className="flex select-none flex-col space-y-1 p-4">
-                      <img src="assets/logo/logo_full.png" />
+                      <img src="assets/logo/logo_full.png" alt="logo"/>
                     </div>
                   </div>
                 </AnimatedBackground>
