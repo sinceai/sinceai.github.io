@@ -42,10 +42,10 @@ export default function GoogleGeminiEffectDemo() {
               <p className="text-3xl md:text-5xl lg:text-9xl text-white font-bold inter-var text-center">
                 Since AI
               </p>
-              <div className="text-6xl text-center">
+              <div className="text-2xl md:text-4xl lg:text-8xl text-center">
                 
                 <TextLoop
-                  className=""
+                  className="flex w-full text-balance"
                   transition={{
                     type: "spring",
                     stiffness: 900,
@@ -89,7 +89,6 @@ export default function GoogleGeminiEffectDemo() {
                 Turku, Finland
               </p>
               <div className="min-w-[200px] bg-white h-1 flex-1" />
-              <div></div>
               
             </div>
           </div>
@@ -272,7 +271,7 @@ export default function GoogleGeminiEffectDemo() {
               </div>
             </section>
 
-            <div className="relative aspect-video h-[200px] overflow-hidden rounded-xl bg-zinc-700/30 p-[2px] ">
+            <div className="relative aspect-video h-[200px] overflow-hidden rounded-xl bg-zinc-700/30 p-[2px]  min-w-80">
               <Spotlight
                 className="from-blue-200 via-blue-300 to-blue-400 blur-3xl "
                 size={124}
@@ -313,7 +312,7 @@ export default function GoogleGeminiEffectDemo() {
               <div className="text-6xl text-balance">To be announced</div>
             </section>
 
-            {/* <div className="relative aspect-video h-[200px] overflow-hidden rounded-xl bg-zinc-700/30 p-[2px] ">
+            {/* <div className="relative aspect-video h-[200px] overflow-hidden rounded-xl bg-zinc-700/30 p-[2px]  min-w-80">
               <Spotlight
                 className="from-blue-200 via-blue-300 to-blue-400 blur-3xl "
                 size={124}
@@ -347,7 +346,7 @@ export default function GoogleGeminiEffectDemo() {
 
             <div className="flex flex-wrap gap-8">
               <div className="flex p-4 text-2xl w-[150px]">4:00 PM</div>
-              <div className="relative flex flex-1 h-fit overflow-hidden rounded-xl bg-zinc-700/30 p-[2px] ">
+              <div className="relative flex flex-1 h-fit overflow-hidden rounded-xl bg-zinc-700/30 p-[2px] min-w-80">
                 <Spotlight
                   className="from-blue-200 via-blue-300 to-blue-400 blur-3xl "
                   size={124}
@@ -375,7 +374,7 @@ export default function GoogleGeminiEffectDemo() {
 
             <div className="flex flex-wrap gap-8">
               <div className="flex p-4 text-2xl w-[150px]">All Day</div>
-              <div className="relative flex flex-1 h-fit overflow-hidden rounded-xl bg-zinc-700/30 p-[2px] ">
+              <div className="relative flex flex-1 h-fit overflow-hidden rounded-xl bg-zinc-700/30 p-[2px]  min-w-80">
                 <Spotlight
                   className="from-blue-200 via-blue-300 to-blue-400 blur-3xl "
                   size={124}
@@ -403,7 +402,7 @@ export default function GoogleGeminiEffectDemo() {
 
             <div className="flex flex-wrap gap-8">
               <div className="flex p-4 text-2xl w-[150px]">5:00 PM</div>
-              <div className="relative flex flex-1 h-fit overflow-hidden rounded-xl bg-zinc-700/30 p-[2px] ">
+              <div className="relative flex flex-1 h-fit overflow-hidden rounded-xl bg-zinc-700/30 p-[2px]  min-w-80">
                 <Spotlight
                   className="from-blue-200 via-blue-300 to-blue-400 blur-3xl "
                   size={124}
@@ -447,42 +446,42 @@ export default function GoogleGeminiEffectDemo() {
                   enableHover
                 >
                   <div data-id={`card-1`}>
-                    <div className="flex select-none flex-col space-y-1 p-4">
+                    <div className="flex select-none flex-col space-y-1">
                       <img src="assets/logo/logo_full.png" alt="logo"/>
                     </div>
                   </div>
                   <div data-id={`card-2`}>
-                    <div className="flex select-none flex-col space-y-1 p-4">
+                    <div className="flex select-none flex-col space-y-1">
                       <img src="assets/logo/logo_full.png" alt="logo"/>
                     </div>
                   </div>
                   <div data-id={`card-3`}>
-                    <div className="flex select-none flex-col space-y-1 p-4">
+                    <div className="flex select-none flex-col space-y-1">
                       <img src="assets/logo/logo_full.png" alt="logo"/>
                     </div>
                   </div>
                   <div data-id={`card-4`}>
-                    <div className="flex select-none flex-col space-y-1 p-4">
+                    <div className="flex select-none flex-col space-y-1">
                       <img src="assets/logo/logo_full.png" alt="logo"/>
                     </div>
                   </div>
                   <div data-id={`card-5`}>
-                    <div className="flex select-none flex-col space-y-1 p-4">
+                    <div className="flex select-none flex-col space-y-1">
                       <img src="assets/logo/logo_full.png" alt="logo"/>
                     </div>
                   </div>
                   <div data-id={`card-6`}>
-                    <div className="flex select-none flex-col space-y-1 p-4">
+                    <div className="flex select-none flex-col space-y-1">
                       <img src="assets/logo/logo_full.png" alt="logo"/>
                     </div>
                   </div>
                   <div data-id={`card-7`}>
-                    <div className="flex select-none flex-col space-y-1 p-4">
+                    <div className="flex select-none flex-col space-y-1">
                       <img src="assets/logo/logo_full.png" alt="logo"/>
                     </div>
                   </div>
                   <div data-id={`card-8`}>
-                    <div className="flex select-none flex-col space-y-1 p-4">
+                    <div className="flex select-none flex-col space-y-1">
                       <img src="assets/logo/logo_full.png" alt="logo"/>
                     </div>
                   </div>
