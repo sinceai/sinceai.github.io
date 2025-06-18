@@ -82,7 +82,7 @@ export default function GoogleGeminiEffectDemo() {
             </div>
             <div className="flex flex-wrap h-fit w-full gap-4 items-center">
               <p className="text-center w-full md:w-fit text-large">
-                25th - 27th December 2025
+                21st - 23rd November 2025
               </p>
               <div className="min-w-[200px] bg-white h-1 flex-1 " />
               <p className="text-center w-full md:w-fit text-large">
