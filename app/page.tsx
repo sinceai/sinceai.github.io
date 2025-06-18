@@ -46,7 +46,7 @@ export default function GoogleGeminiEffectDemo() {
               <p className="text-3xl md:text-5xl lg:text-9xl text-white font-bold inter-var text-center">
                 Since AI
               </p>
-              <p className="text-6xl text-center">
+              <div className="text-6xl text-center">
                 
                 <TextLoop
                   className=""
@@ -82,7 +82,7 @@ export default function GoogleGeminiEffectDemo() {
                   <span>Loved and made in Designers</span>
                   <span>Loved and made in AI enthusiast</span>
                 </TextLoop>
-              </p>
+              </div>
             </div>
             <div className="flex flex-wrap h-fit w-full gap-4 items-center">
               <p className="text-center w-full md:w-fit text-large">
