@@ -7,7 +7,6 @@ import { AnimatePresence } from "framer-motion";
 import { InView } from "@/components/motion-primitives/in-view";
 import { InfiniteSlider } from "@/components/motion-primitives/infinite-slider";
 import { WavyBackground } from "@/components/ui/wavy-background";
-import { SpinningText } from "@/components/motion-primitives/spinning-text";
 import { Spotlight } from "@/components/motion-primitives/spotlight";
 import { AnimatedBackground } from "@/components/motion-primitives/animated-background";
 import { Accordion, AccordionItem } from "@heroui/react";
@@ -91,41 +90,7 @@ export default function GoogleGeminiEffectDemo() {
               </p>
               <div className="min-w-[200px] bg-white h-1 flex-1" />
               <div></div>
-              <SpinningText
-                radius={3}
-                fontSize={1}
-                variants={{
-                  container: {
-                    hidden: {
-                      opacity: 1,
-                    },
-                    visible: {
-                      opacity: 1,
-                      rotate: 360,
-                      transition: {
-                        type: "spring",
-                        bounce: 0,
-                        duration: 6,
-                        repeat: Infinity,
-                        staggerChildren: 0.03,
-                      },
-                    },
-                  },
-                  item: {
-                    hidden: {
-                      opacity: 0,
-                      filter: "blur(4px)",
-                    },
-                    visible: {
-                      opacity: 1,
-                      filter: "blur(0px)",
-                    },
-                  },
-                }}
-                className="font-[450] flex mx-16"
-              >
-                {`•••••••••••••`}
-              </SpinningText>
+              
             </div>
           </div>
         </WavyBackground>
