@@ -4,7 +4,22 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = ({ className }) => {
-  return <div className={`font-bold ${className || ""}`}>Since AI</div>;
+  const defaultClass = "logo-default-size";
+  return (
+    <>
+      <style jsx>{`
+        .logo-default-size {
+          width: auto;
+          height: 100px;
+        }
+      `}</style>
+      <img
+        src="assets/logo/logo_full.png"
+        className={className ? className : defaultClass}
+        alt="Since AI Logo"
+      />
+    </>
+  );
 };
 
 export default Logo;

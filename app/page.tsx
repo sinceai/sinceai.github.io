@@ -1,40 +1,25 @@
 "use client";
-
-import { Link } from "@heroui/link";
-import { TextEffect } from '@/components/motion-primitives/text-effect';
-
-
-import React, { useState, useEffect } from "react";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  CardFooter,
-  HeroUIProvider,
-  Image,
-  Divider,
-  Input,
-  Avatar,
-} from "@heroui/react";
-import { Accordion, AccordionItem, Chip } from "@heroui/react";
-import { AnimatePresence } from "framer-motion";
-import Logo from "@/components/logo";
-
+import { useScroll, useTransform } from "motion/react";
+import React from "react";
+import { GoogleGeminiEffect } from "@/components/ui/google-gemini-effect";
+import SmoothScroll from "@/components/smoothScroll";
+import Projects from "@/components/projects";
+import { useEffect, useState } from "react";
 import Preloader from "@/components/utils/Preloader";
+import { AnimatePresence } from "framer-motion";
+import { InView } from "@/components/motion-primitives/in-view";
+import { InfiniteSlider } from "@/components/motion-primitives/infinite-slider";
+import { WavyBackground } from "@/components/ui/wavy-background";
+import { SpinningText } from "@/components/motion-primitives/spinning-text";
+import { Spotlight } from "@/components/motion-primitives/spotlight";
+import { AnimatedBackground } from "@/components/motion-primitives/animated-background";
+import { Accordion, AccordionItem } from "@heroui/react";
+import { Magnetic } from "@/components/motion-primitives/magnetic";
+import { TextLoop } from "@/components/motion-primitives/text-loop";
 
-import dynamic from "next/dynamic";
-import { IoLocationSharp } from "react-icons/io5";
-import { MdDateRange } from "react-icons/md";
-import { MdAttachMoney } from "react-icons/md";
-import { NumberTicker } from "@/components/effects/number_ticker";
-import { GoPlus } from "react-icons/go";
-import { FaCheck } from "react-icons/fa";
-import { IoIosSend } from "react-icons/io";
+export default function GoogleGeminiEffectDemo() {
+  const ref = React.useRef(null);
 
-import educity from "@/public/assets/images/educity.jpg";
-
-export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -46,249 +31,712 @@ export default function Home() {
       })();
     }
   }, []);
+
+  const springOptions = { bounce: 0.1 };
+
   return (
-    <div>
+    <SmoothScroll>
       <AnimatePresence mode="wait">
         {isLoading && <Preloader />}
       </AnimatePresence>
-
-      <section className="flex flex-col w-full h-fit items-center justify-center gap-4">
-        <section
-          className="flex flex-row w-full h-fit items-center justify-center"
-          style={{ maxWidth: "1536px" }}
-        >
-          <div className="flex flex-row flex-wrap w-full h-full items-center justify-center gap-4">
-            <div className="flex flex-col flex-1 justify-between w-full h-full gap-4 items-center md:items-start">
-              <span className="flex flex-col gap-4">
-                <span className="flex flex-row items-end gap-2">
-                  <Logo className="text-5xl md:text-6x2 lg:text-7xl whitespace-nowrap" />
-                  <span className="text-4xl md:text-5xl lg:text-6xl whitespace-nowrap">
-                    is Here
-                  </span>
-                </span>
-                <span className="flex flex-row gap-2">
-                  <span className="text-3xl font-bold items-center justify-center">
-                    Why not{" "}
-                    <Link
-                      color="secondary"
-                      className="text-3xl z-20"
-                      underline="hover"
-                    >
-                      Join
-                    </Link>
-                    ?
-                  </span>
-                </span>
-
-                <Card
-                  isBlurred
-                  className="z-20 border border-content1 bg-background/60 dark:bg-default-100/50 max-w-[400px]"
+      <div className="flex flex-col w-full">
+        <WavyBackground className="flex w-full h-screen p-16 my-32">
+          <div className="w-full flex flex-col h-full">
+            <div className="w-full flex h-full flex-col gap-4">
+              <p className="text-3xl md:text-5xl lg:text-9xl text-white font-bold inter-var text-center">
+                Since AI
+              </p>
+              <p className="text-6xl text-center">
+                
+                <TextLoop
+                  className=""
+                  transition={{
+                    type: "spring",
+                    stiffness: 900,
+                    damping: 80,
+                    mass: 10,
+                  }}
+                  variants={{
+                    initial: {
+                      y: 20,
+                      rotateX: 90,
+                      opacity: 0,
+                      filter: "blur(4px)",
+                    },
+                    animate: {
+                      y: 0,
+                      rotateX: 0,
+                      opacity: 1,
+                      filter: "blur(0px)",
+                    },
+                    exit: {
+                      y: -20,
+                      rotateX: -90,
+                      opacity: 0,
+                      filter: "blur(4px)",
+                    },
+                  }}
                 >
-                  <CardHeader>
+                  <span>Loved and made in Founders</span>
+                  <span>Loved and made in Developers</span>
+                  <span>Loved and made in Designers</span>
+                  <span>Loved and made in AI enthusiast</span>
+                </TextLoop>
+              </p>
+            </div>
+            <div className="flex flex-wrap h-fit w-full gap-4 items-center">
+              <p className="text-center w-full md:w-fit text-large">
+                25th - 27th December 2025
+              </p>
+              <div className="min-w-[200px] bg-white h-1 flex-1 " />
+              <p className="text-center w-full md:w-fit text-large">
+                Turku, Finland
+              </p>
+              <div className="min-w-[200px] bg-white h-1 flex-1" />
+              <div></div>
+              <SpinningText
+                radius={3}
+                fontSize={1}
+                variants={{
+                  container: {
+                    hidden: {
+                      opacity: 1,
+                    },
+                    visible: {
+                      opacity: 1,
+                      rotate: 360,
+                      transition: {
+                        type: "spring",
+                        bounce: 0,
+                        duration: 6,
+                        repeat: Infinity,
+                        staggerChildren: 0.03,
+                      },
+                    },
+                  },
+                  item: {
+                    hidden: {
+                      opacity: 0,
+                      filter: "blur(4px)",
+                    },
+                    visible: {
+                      opacity: 1,
+                      filter: "blur(0px)",
+                    },
+                  },
+                }}
+                className="font-[450] flex mx-16"
+              >
+                {`•••••••••••••`}
+              </SpinningText>
+            </div>
+          </div>
+        </WavyBackground>
+        <div className="flex flex-col gap-32">
+          <InfiniteSlider gap={24}>
+            <img
+              src="assets\logo\logo_full.png"
+              alt="Nintendo logo"
+              className="h-[120px] w-auto"
+            />
+            <img
+              src="assets\logo\logo_full.png"
+              alt="Nintendo logo"
+              className="h-[120px] w-auto"
+            />
+            <img
+              src="assets\logo\logo_full.png"
+              alt="Nintendo logo"
+              className="h-[120px] w-auto"
+            />
+            <img
+              src="assets\logo\logo_full.png"
+              alt="Nintendo logo"
+              className="h-[120px] w-auto"
+            />
+            <img
+              src="assets\logo\logo_full.png"
+              alt="Nintendo logo"
+              className="h-[120px] w-auto"
+            />
+            <img
+              src="assets\logo\logo_full.png"
+              alt="Nintendo logo"
+              className="h-[120px] w-auto"
+            />
+            <img
+              src="assets\logo\logo_full.png"
+              alt="Nintendo logo"
+              className="h-[120px] w-auto"
+            />
+            <img
+              src="assets\logo\logo_full.png"
+              alt="Nintendo logo"
+              className="h-[120px] w-auto"
+            />
+            <img
+              src="assets\logo\logo_full.png"
+              alt="Nintendo logo"
+              className="h-[120px] w-auto"
+            />
+            <img
+              src="assets\logo\logo_full.png"
+              alt="Nintendo logo"
+              className="h-[120px] w-auto"
+            />
+            <img
+              src="assets\logo\logo_full.png"
+              alt="Nintendo logo"
+              className="h-[120px] w-auto"
+            />
+          </InfiniteSlider>
 
-                    <span className="text-sm font-bold">
-                        <TextEffect per='char' preset='fade'>
-                      3 days AI Hackathon
-                        </TextEffect>
-                    </span>
-                  </CardHeader>
-                  <CardBody>
-                    <div className="text-sm flex flex-col gap-4">
-                      We cover GPUs, APIs, Foods, Drinks, and more! All you need
-                      is passion and knowledge
-                    </div>
-                  </CardBody>
-                </Card>
-              </span>
-              <div>
-                <Card
-                  isBlurred
-                  className="z-20 border border-content1 bg-background/60 max-w-[400px] shadow-white"
-                  shadow="lg"
-                >
-                  <CardBody className="flex flex-col gap-2">
-                    <div className="flex flex-row items-start gap-2">
-                      <div>
-                        <Avatar
-                          className="bg-gradient-to-r from-primary to-secondary"
-                          name="SA"
+          <div className="flex flex-col self-center w-full max-w-[1280px] gap-8 px-8">
+            <section className="flex flex-col gap-8">
+              <div className="flex flex-row items-center gap-4 mb-8">
+                <div className="max-w-9 bg-white h-1 flex-1" />
+                About Since AI
+              </div>
+
+              <div className="text-6xl text-balance">
+                Why you should attend the Since AI Hackathon
+              </div>
+            </section>
+            <section className="flex flex-wrap w-full gap-8">
+              <div className="relative aspect-video h-full rounded-3xl border border-zinc-800 bg-black flex flex-1">
+                <Spotlight
+                  className="from-blue-800 via-blue-600 to-blue-400 blur-xl dark:from-blue-900 dark:via-blue-500 dark:to-blue-900"
+                  size={64}
+                />
+                <div className="absolute inset-0">
+                  <svg className="h-full w-full">
+                    <defs>
+                      <pattern
+                        id="grid-pattern"
+                        width="8"
+                        height="8"
+                        patternUnits="userSpaceOnUse"
+                      >
+                        <path
+                          xmlns="http://www.w3.org/2000/svg"
+                          d="M0 4H4M4 4V0M4 4H8M4 4V8"
+                          stroke="currentColor"
+                          strokeOpacity="0.3"
+                          className="stroke-black"
                         />
-                      </div>
-                      <Card>
-                        <CardBody>
-                          Watch here, Ask me anything, there's nothing much on
-                          this website, and don't even compare me with any other
-                          stupid chatbot on other website, WE ARE NOT THE SAME.
-                          you got questions? ask me.
-                        </CardBody>
-                      </Card>
-                      <div>
-                        <Avatar className="bg-transparent" name=" " />
-                      </div>
-                    </div>
-                    <div className="flex flex-row items-start justify-end gap-2 w-full">
-                      <div>
-                        <Avatar className="bg-transparent" name=" " />
-                      </div>
-                      <Card className="bg-transparent" shadow="none">
-                        <CardBody>Okay? understand..</CardBody>
-                      </Card>
-                      <div>
-                        <Avatar
-                          className="bg-gradient-to-r from-secondary to-primary"
-                          name="You"
+                        <rect
+                          x="3"
+                          y="3"
+                          width="2"
+                          height="2"
+                          fill="currentColor"
+                          fillOpacity="0.25"
+                          className="fill-black"
                         />
-                      </div>
-                    </div>
-                    <div className="flex flex-row items-start gap-2">
-                      <div>
-                        <Avatar
-                          className="bg-gradient-to-r from-primary to-secondary"
-                          name="SA"
-                        />
-                      </div>
-                      <Card>
-                        <CardBody>Good, so how can I help?</CardBody>
-                      </Card>
-                      <div>
-                        <Avatar className="bg-transparent" name=" " />
-                      </div>
-                    </div>
-                  </CardBody>
-                  <CardFooter>
-                    <Input
-                      endContent={
-                        <Button isIconOnly variant="light">
-                          <IoIosSend />
-                        </Button>
-                      }
+                      </pattern>
+                    </defs>
+                    <rect
+                      width="100%"
+                      height="100%"
+                      fill="url(#grid-pattern)"
                     />
-                  </CardFooter>
-                </Card>
+                  </svg>
+                </div>
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-sm p-2">
+                  <img
+                    src="/assets/logo/logo_full.png"
+                    alt="Since AI Logo"
+                    className=" w-auto object-contain"
+                  />
+                </div>
+              </div>
+
+              <InView
+                variants={{
+                  hidden: { opacity: 0, y: 100, filter: "blur(4px)" },
+                  visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+                }}
+                viewOptions={{ margin: "0px 0px -200px 0px" }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <span className="flex flex-col justify-center  inter-var font-light leading-8 tracking-wide max-w-[600px] gap-4">
+                  <p>
+                    SinceAI is more than just a hackathon—it's a launchpad for
+                    the next generation of AI innovators. Over one action-packed
+                    weekend, you'll join a vibrant community of engineers,
+                    students, and entrepreneurs, all driven by a shared vision
+                    to shape the future of artificial intelligence. Collaborate
+                    with ambitious creators, tackle real-world challenges, and
+                    push the boundaries of what's possible with access to
+                    cutting-edge GPUs, APIs, and expert mentors.
+                  </p>
+                  <p>
+                    Compete for over €10,000 in prizes, connect with industry
+                    partners, and be part of a movement that's building a unique
+                    AI ecosystem in Turku and beyond. Whether you're looking to
+                    learn, build, or make an impact, SinceAI is where ideas
+                    become reality and the future of AI begins.
+                  </p>
+                </span>
+              </InView>
+            </section>
+
+            <section>
+              <div className="w-full flex justify-center">
+                <video
+                  src="/assets/videos/ads.mp4"
+                  muted
+                  controls={false}
+                  autoPlay
+                  loop
+                  className="rounded-lg shadow-lg w-full max-w-3xl aspect-video bg-black"
+                  poster="/assets/logo/logo_full.png"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </section>
+          </div>
+
+          <div className="flex flex-col self-center w-full max-w-[1280px] gap-8 px-8">
+            <section className="flex flex-col gap-8">
+              <div className="flex flex-row items-center gap-4 mb-8">
+                <div className="max-w-9 bg-white h-1 flex-1" />
+                For Whom?
+              </div>
+
+              <div className="text-6xl text-balance">
+                Who should attend the Since AI Hackathon
+              </div>
+            </section>
+
+            <div className="relative aspect-video h-[200px] overflow-hidden rounded-xl bg-zinc-700/30 p-[2px] ">
+              <Spotlight
+                className="from-blue-200 via-blue-300 to-blue-400 blur-3xl "
+                size={124}
+              />
+              <div className="relative h-full w-full rounded-xl bg-black p-8">
+                Anyone in the EU with AI/ML passion! You can apply solo or as a
+                team (up to 4). At least one team member must be technically
+                proficient in AI/ML.
               </div>
             </div>
-            <div className="flex flex-col flex-1 w-full h-fit justify-start gap-4 items-center md:items-end">
-              <Card
-                isHoverable
-                isBlurred
-                className="flex w-full md:w-fit  z-20 border border-content1 bg-background/60 max-w-[500px] shadow-white"
-                shadow="lg"
-              >
-                {" "}
-                <CardBody>
-                  <div className="flex flex-row items-end">
-                    <NumberTicker
-                      value={10000}
-                      className="whitespace-pre-wrap text-7xl font-medium tracking-tighter text-white"
-                      delay={3.5}
-                    />
-                    <MdAttachMoney size={60} />
-                    <span className="text-3xl pb-2">Prize Pool</span>
-                  </div>
-                </CardBody>
-              </Card>
-              <Card
-                isHoverable
-                isBlurred
-                className="flex w-full md:w-fit z-20 border border-content1 bg-background/60 max-w-[450px] shadow-white"
-                shadow="lg"
-              >
-                {" "}
-                <CardBody>
-                  <div className="flex flex-row items-end">
-                    <NumberTicker
-                      value={200}
-                      className="whitespace-pre-wrap text-7xl font-medium tracking-tighter text-white"
-                      delay={3.5}
-                    />
-                    <GoPlus size={60} />
-                    <span className="text-3xl pb-2"> AI Enthusiast</span>
-                  </div>
-                </CardBody>
-              </Card>
-              <Card
-                isFooterBlurred
-                className="w-fit h-[300px] col-span-12 sm:col-span-7 z-20"
-              >
-                <CardHeader className="absolute z-10 top-1 flex-col items-start">
-                  <p className="text-tiny text-white/60 uppercase font-bold">
-                    Your day your way
-                  </p>
-                  <h4 className="text-white/90 font-medium text-xl">
-                    Your checklist for better sleep
-                  </h4>
-                </CardHeader>
-                <Image
-                  removeWrapper
-                  src={educity.src}
-                  className="z-30 object-cover w-full h-full"
+          </div>
+
+          <InfiniteSlider gap={24} className="my-16">
+            <div className="text-9xl text-center font-[450] text-white">
+              Innovation .
+            </div>
+            <div className="text-9xl text-center font-[450] text-white">
+              Impact .
+            </div>
+            <div className="text-9xl text-center font-[450] text-white">
+              Startup .
+            </div>
+            <div className="text-9xl text-center font-[450] text-white">
+              Future .
+            </div>
+            <div className="text-9xl text-center font-[450] text-white">
+              Next Gen .
+            </div>
+          </InfiniteSlider>
+
+          <div className="flex flex-col self-center w-full max-w-[1280px] gap-8 px-8">
+            <section className="flex flex-col gap-8">
+              <div className="flex flex-row items-center gap-4 mb-8">
+                <div className="max-w-9 bg-white h-1 flex-1" />
+                Prices
+              </div>
+
+              <div className="text-6xl text-balance">To be announced</div>
+            </section>
+
+            {/* <div className="relative aspect-video h-[200px] overflow-hidden rounded-xl bg-zinc-700/30 p-[2px] ">
+              <Spotlight
+                className="from-blue-200 via-blue-300 to-blue-400 blur-3xl "
+                size={124}
+              />
+              <div className="relative h-full w-full rounded-xl bg-black p-8">
+                Anyone in the EU with AI/ML passion! You can apply solo or as a
+                team (up to 4). At least one team member must be technically
+                proficient in AI/ML.
+              </div>
+            </div> */}
+          </div>
+
+          <div className="flex flex-col self-center w-full max-w-[1280px] gap-8 px-8">
+            <section className="flex flex-col gap-8">
+              <div className="flex flex-row items-center gap-4 mb-8">
+                <div className="max-w-9 bg-white h-1 flex-1" />
+                Agenda
+              </div>
+
+              <div className="text-6xl text-balance">
+                Discover the Full Since AI Hackathon Agenda
+              </div>
+            </section>
+
+            <div className="flex flex-row rounded-xl overflow-hidden mt-8 text-4xl">
+              <div className="flex p-4 bg-[#15f0c4] w-44 text-black ">
+                Kick off
+              </div>
+              <div className="flex p-4 bg-content1 flex-1">Day1</div>
+            </div>
+
+            <div className="flex flex-wrap gap-8">
+              <div className="flex p-4 text-2xl w-[150px]">4:00 PM</div>
+              <div className="relative flex flex-1 h-fit overflow-hidden rounded-xl bg-zinc-700/30 p-[2px] ">
+                <Spotlight
+                  className="from-blue-200 via-blue-300 to-blue-400 blur-3xl "
+                  size={124}
                 />
-                <CardFooter className="flex flex-col items-start absolute bg-black/40 bottom-0 z-40 border-t-1 border-default-600 dark:border-default-100">
-                  <div className="flex flex-row items-center gap-2">
-                    <Button isIconOnly variant="light">
-                      <IoLocationSharp size={24} />
-                    </Button>
-                    <span>Edu city, Turku, Finland</span>
+                <div className="relative h-fit w-full rounded-xl bg-content1 p-8">
+                  <div className="text-2xl font-bold mb-4">
+                    Kickoff + Team forming
                   </div>
-                  <div className="flex flex-row items-center gap-2">
-                    <Button isIconOnly variant="light">
-                      <MdDateRange size={24} />
-                    </Button>
-                    <span>In 3 - 5 months</span>
+                  <ul className="list-disc pl-6 space-y-1">
+                    <li>Welcome presentation</li>
+                    <li>Challenge announcement</li>
+                    <li>Team formation activities</li>
+                    <li>Initial brainstorming</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-row rounded-xl overflow-hidden mt-8 text-4xl">
+              <div className="flex p-4 bg-[#15f0c4] w-44 text-black ">
+                Hacking
+              </div>
+              <div className="flex p-4 bg-content1 flex-1">Day2</div>
+            </div>
+
+            <div className="flex flex-wrap gap-8">
+              <div className="flex p-4 text-2xl w-[150px]">All Day</div>
+              <div className="relative flex flex-1 h-fit overflow-hidden rounded-xl bg-zinc-700/30 p-[2px] ">
+                <Spotlight
+                  className="from-blue-200 via-blue-300 to-blue-400 blur-3xl "
+                  size={124}
+                />
+                <div className="relative h-fit w-full rounded-xl bg-content1 p-8">
+                  <div className="text-2xl font-bold mb-4">
+                    Hacking + Workshops
                   </div>
-                </CardFooter>
-              </Card>
-              <Card
-                isHoverable
-                isBlurred
-                className="flex w-full z-20 border border-content1 bg-background/60 dark:bg-default-100/50 max-w-[400px]"
+                  <ul className="list-disc pl-6 space-y-1">
+                    <li>Hands-on hacking sessions</li>
+                    <li>Mentor support available</li>
+                    <li>Technical workshops</li>
+                    <li>Midway project check-in</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-row rounded-xl overflow-hidden mt-8 text-4xl">
+              <div className="flex p-4 bg-[#15f0c4] w-44 text-black ">
+                Final
+              </div>
+              <div className="flex p-4 bg-content1 flex-1">Day3</div>
+            </div>
+
+            <div className="flex flex-wrap gap-8">
+              <div className="flex p-4 text-2xl w-[150px]">5:00 PM</div>
+              <div className="relative flex flex-1 h-fit overflow-hidden rounded-xl bg-zinc-700/30 p-[2px] ">
+                <Spotlight
+                  className="from-blue-200 via-blue-300 to-blue-400 blur-3xl "
+                  size={124}
+                />
+                <div className="relative h-fit w-full rounded-xl bg-content1 p-8">
+                  <div className="text-2xl font-bold mb-4">
+                    Final presentations + Awards
+                  </div>
+                  <ul className="list-disc pl-6 space-y-1">
+                    <li>Project submissions</li>
+                    <li>Demo presentations</li>
+                    <li>Judging</li>
+                    <li>Awards ceremony</li>
+                    <li>Networking & celebration</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col self-center w-full max-w-[1280px] gap-8 px-8">
+            <section className="flex flex-col gap-8">
+              <div className="flex flex-row items-center gap-4 mb-8">
+                <div className="max-w-9 bg-white h-1 flex-1" />
+                Partners
+              </div>
+
+              <div className="text-6xl text-balance">
+                Meet our partners who help making this event happen
+              </div>
+            </section>
+            <section>
+              <div className="grid grid-cols-2 p-10 md:grid-cols-4">
+                <AnimatedBackground
+                  className="rounded-lg bg-zinc-800"
+                  transition={{
+                    type: "spring",
+                    bounce: 0.2,
+                    duration: 0.6,
+                  }}
+                  enableHover
+                >
+                  <div data-id={`card-1`}>
+                    <div className="flex select-none flex-col space-y-1 p-4">
+                      <img src="assets/logo/logo_full.png" />
+                    </div>
+                  </div>
+                  <div data-id={`card-2`}>
+                    <div className="flex select-none flex-col space-y-1 p-4">
+                      <img src="assets/logo/logo_full.png" />
+                    </div>
+                  </div>
+                  <div data-id={`card-3`}>
+                    <div className="flex select-none flex-col space-y-1 p-4">
+                      <img src="assets/logo/logo_full.png" />
+                    </div>
+                  </div>
+                  <div data-id={`card-4`}>
+                    <div className="flex select-none flex-col space-y-1 p-4">
+                      <img src="assets/logo/logo_full.png" />
+                    </div>
+                  </div>
+                  <div data-id={`card-5`}>
+                    <div className="flex select-none flex-col space-y-1 p-4">
+                      <img src="assets/logo/logo_full.png" />
+                    </div>
+                  </div>
+                  <div data-id={`card-6`}>
+                    <div className="flex select-none flex-col space-y-1 p-4">
+                      <img src="assets/logo/logo_full.png" />
+                    </div>
+                  </div>
+                  <div data-id={`card-7`}>
+                    <div className="flex select-none flex-col space-y-1 p-4">
+                      <img src="assets/logo/logo_full.png" />
+                    </div>
+                  </div>
+                  <div data-id={`card-8`}>
+                    <div className="flex select-none flex-col space-y-1 p-4">
+                      <img src="assets/logo/logo_full.png" />
+                    </div>
+                  </div>
+                </AnimatedBackground>
+              </div>
+            </section>
+          </div>
+
+          <div className="flex flex-wrap self-center w-full max-w-[1280px] gap-16 px-8">
+            <section className="flex flex-col flex-1">
+              <div className="flex flex-row items-center gap-4 mb-8">
+                <div className="max-w-9 bg-white h-1 flex-1" />
+                Questions
+              </div>
+
+              <div className="text-6xl text-balance leading-tight">
+                Have any questions? We are here to help!
+              </div>
+            </section>
+            <section className="flex flex-col flex-1">
+              <Accordion variant="splitted">
+                <AccordionItem
+                  key="1"
+                  aria-label="Do I need to know how to code?"
+                  title="Do I need to know how to code?"
+                >
+                  If you're applying as a hacker — yes, at least one person on
+                  your team needs solid AI/ML experience. If you're not
+                  technical, check out the showroom instead!
+                </AccordionItem>
+                <AccordionItem
+                  key="2"
+                  aria-label="Can I apply solo?"
+                  title="Can I apply solo?"
+                >
+                  Absolutely. We'll help you find a team before and during the
+                  event.
+                </AccordionItem>
+                <AccordionItem
+                  key="3"
+                  aria-label="Where is the event?"
+                  title="Where is the event?"
+                >
+                  In Turku, Finland. The exact location will be shared with
+                  approved participants.
+                </AccordionItem>
+
+                <AccordionItem
+                  key="4"
+                  aria-label="Is it really free?"
+                  title="Is it really free?"
+                >
+                  Yes. We cover everything — food, drinks, space, swag, and
+                  compute.
+                </AccordionItem>
+                <AccordionItem
+                  key="5"
+                  aria-label="How do I know if I got in?"
+                  title="How do I know if I got in?"
+                >
+                  All applications are reviewed. You'll receive an approval
+                  email if selected.
+                </AccordionItem>
+              </Accordion>
+            </section>
+          </div>
+
+          <div className="flex flex-wrap self-center w-full max-w-[1280px] gap-16 px-8">
+            <section className="flex flex-col flex-1">
+              <div className="flex flex-row items-center gap-4 mb-8">
+                <div className="max-w-9 bg-white h-1 flex-1" />
+                Registration
+              </div>
+
+              <div className="text-6xl text-balance leading-tight">
+                Secure Your Spot at Since AI Hackathon Today!
+              </div>
+            </section>
+            <section className="flex flex-col flex-1 justify-center items-center">
+              <Magnetic
+                intensity={0.2}
+                springOptions={springOptions}
+                actionArea="global"
+                range={200}
               >
-                {" "}
-                <CardHeader>What's included?</CardHeader>
-                <CardBody className="flex flex-row flex-wrap  gap-1">
-                  <Chip color="primary" variant="flat">
-                    Foods
-                  </Chip>
-                  <Chip color="primary" variant="flat">
-                    Drinks
-                  </Chip>
+                <button
+                  type="button"
+                  className="inline-flex items-center rounded-xl border-2 border-zinc-900 bg-[#15f0c4]/80 px-8 py-4 text-xl font-semibold text-black transition-all duration-200 hover:bg-[#15f0c4]"
+                >
+                  <Magnetic
+                    intensity={0.1}
+                    springOptions={springOptions}
+                    actionArea="global"
+                    range={200}
+                  >
+                    <span>Apply</span>
+                  </Magnetic>
+                </button>
+              </Magnetic>
+            </section>
+          </div>
 
-                  <Chip color="secondary" variant="flat">
-                    GPUs
-                  </Chip>
+          <div className="flex flex-col self-center w-full max-w-[1280px] gap-8 px-8">
+            <section className="flex flex-col flex-1">
+              <div className="flex flex-row items-center gap-4 mb-8">
+                <div className="max-w-9 bg-white h-1 flex-1" />
+                Contact
+              </div>
 
-                  <Chip color="secondary" variant="flat">
-                    APIs
-                  </Chip>
-
-                  <Chip color="primary" variant="flat">
-                    Space
-                  </Chip>
-
-                  <span>more coming up...</span>
-                </CardBody>
-              </Card>
+              <div className="text-6xl text-balance leading-tight">
+                Get in touch for questions or sponsorship!
+              </div>
+            </section>
+            <div className="flex items-center gap-4">
+              <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+                <path
+                  d="M2 4.5A2.5 2.5 0 014.5 2h15A2.5 2.5 0 0122 4.5v15a2.5 2.5 0 01-2.5 2.5h-15A2.5 2.5 0 012 19.5v-15z"
+                  stroke="#15f0c4"
+                  strokeWidth="2"
+                />
+                <path d="M4 6l8 7 8-7" stroke="#15f0c4" strokeWidth="2" />
+              </svg>
+              <a
+                href="mailto:yuehan.john@boostturku.com"
+                className="text-xl text-[#15f0c4] hover:underline"
+              >
+                yuehan.john@boostturku.com
+              </a>
             </div>
           </div>
-          <div className="absolute flex flex-row items-center justify-center h-[calc(100vh-4rem)] bg-transparent w-full">
-            <div className="w-full mx-auto relative overflow-hidden h-full px-4">
-              <div className="absolute w-full bottom-0 inset-x-0 h-full bg-gradient-to-b pointer-events-none select-none from-transparent to-primary/20 z-40" />
-              <div
-                id="scene-container"
-                key="scene-container"
-                className="absolute items-center justify-center w-full h-full z-10"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              ></div>
+
+          <div
+            className="relative h-[800px]"
+            style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
+          >
+            <div className="relative h-[calc(100vh+800px)] -top-[100vh]">
+              <div className="h-[800px] sticky top-[calc(100vh-800px)]">
+                <div className="bg-content2 py-8 px-12 h-full w-full flex flex-col justify-between">
+                  <div>
+                    <div className="flex shrink-0 gap-20">
+                      <div className="flex flex-col gap-2">
+                        <h3 className="mb-2 uppercase text-[#ffffff80]">
+                          Socials
+                        </h3>
+                        <a
+                          href="https://www.linkedin.com/company/sinceai"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline text-white"
+                        >
+                          LinkedIn
+                        </a>
+                        <a
+                          href="https://www.instagram.com/sinceai"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline text-white"
+                        >
+                          Instagram
+                        </a>
+                        <a
+                          href="https://twitter.com/sinceai"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline text-white"
+                        >
+                          Twitter
+                        </a>
+                        <a
+                          href="https://www.tiktok.com/@sinceai"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline text-white"
+                        >
+                          TikTok
+                        </a>
+                        <a
+                          href="https://www.youtube.com/@sinceai"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline text-white"
+                        >
+                          YouTube
+                        </a>
+                        <a
+                          href="https://github.com/sinceai"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline text-white"
+                        >
+                          GitHub
+                        </a>
+                      </div>
+                      {/* <div className="flex flex-col gap-2">
+                        <h3 className="mb-2 uppercase text-[#ffffff80]">
+                          Contact
+                        </h3>
+                        <p>News</p>
+                        <p>Learn</p>
+                        <p>Certification</p>
+                        <p>Publications</p>
+                      </div> */}
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-end">
+                    <h1 className="text-[14vw] leading-[0.8] mt-10">
+                      Since AI
+                    </h1>
+                    <p>©copyright</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
-      </section>
-    </div>
+        </div>
+      </div>
+    </SmoothScroll>
   );
 }

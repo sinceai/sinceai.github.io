@@ -87,7 +87,7 @@ export const Navbar = () => {
   };
 
   return (
-    <HeroUINavbar maxWidth="xl" position="sticky">
+    <HeroUINavbar shouldHideOnScroll maxWidth="xl" >
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarBrand>
           <Logo />
